@@ -1,0 +1,47 @@
+<div  class="search-button input-group">
+  <button id="button1" type="submit" class="btn-secondary" (click)="logAra()">Ara</button>
+<input  [(ngModel)]="searchText" id="arama" type="text" placeholder="Ara">
+</div>
+<div>
+<table id="table1"  class="table table-bordered table-striped table-hover table-condensed"style="text-align:center;">
+  <thead>
+    <tr>
+      <th scope="col">Durum</th>
+      <th scope="col">İşlem Tipi</th>
+      <th scope="col">Tarih/Saat</th>
+      <th scope="col">Ip</th>
+      <th scope="col">Açıklama</th>
+    </tr>
+  </thead>
+  <tr *ngFor="let log of loglar | paginate  :{
+    
+    itemsPerPage:pagination.pageSize,
+    currentPage:pagination.page,
+    totalItems:pagination.count};
+    let i = index
+    "
+    >
+    <td>{{ log.durum }}</td>
+    <td>{{ log.islemtipi }}</td>
+    <td>{{ log.tarihsaat }}</td>
+    <td>{{ log.ip }}</td>
+    <td>{{ log.acikklama }}</td>
+    <td>
+      
+      
+
+        <button class="btn-info"(click)="yazdirLog(log)">Yazdır</button>
+    </td>
+  </tr>
+</table>
+</div>
+<div>
+  <pagination-controls style ="color:aliceblue"
+                  
+                        responsive="true"
+                       previousLabel="Previous"
+                       nextLabel="Next"
+                       (pageChange)="pagination.page= $event" >
+  </pagination-controls>
+</div>
+  

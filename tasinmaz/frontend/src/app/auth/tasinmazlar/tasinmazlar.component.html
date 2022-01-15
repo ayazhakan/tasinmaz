@@ -1,0 +1,55 @@
+
+
+<div><button id="btn1" class="btn btn-secondary"[routerLink]="['/tasinmazekle']" routerLinkActive="active">Taşınmaz Ekle</button></div>
+<div  class="search-button input-group">
+  <button id="button1" type="submit" class="btn btn-secondary" (click)="tasinmazAra()">Ara</button>
+<input [(ngModel)]="searchText" id="arama" type="text" placeholder="Ara">
+</div>
+<div>
+<table id="table1"  class="table table-bordered table-striped table-hover table-condensed"style="text-align:center;">
+  <thead>
+    <tr>
+      <th scope="col">İl</th>
+      <th scope="col">İlçe</th>
+      <th scope="col">Mahalle</th>
+      <th scope="col">Ada</th>
+      <th scope="col">Parsel</th>
+      <th scope="col">Nitelik</th>
+      <th scope="col">Adres</th>
+    </tr>
+  </thead>
+  <tr *ngFor="let tasinmaz of tasinmaz|paginate  :{
+    itemsPerPage:pagination.pageSize,
+    currentPage:pagination.page,
+    totalItems:pagination.count};
+    let i = index
+    ">
+    <td>{{ tasinmaz.cityname }}</td>
+    <td>{{ tasinmaz.countyname }}</td>
+    <td>{{ tasinmaz.neighborhoodname }}</td>
+    <td>{{ tasinmaz.ada }}</td>
+    <td>{{ tasinmaz.parsel }}</td>
+    <td>{{ tasinmaz.nitelik }}</td>
+    <td>{{ tasinmaz.adres }}</td>
+    <td>
+      
+      <button class="btn btn-success"[routerLink]="['/tasinmaz-guncelle',tasinmaz.tasinmazid]" routerLinkActive="active" >Güncelle </button>
+      
+      <button class="btn btn-danger" (click)="deleteTasinmaz(tasinmaz.tasinmazid)">Sil</button>
+
+        <button class="btn btn-info"(click)="yazdirTasinmaz(tasinmaz)">Yazdır</button>
+    </td>
+  </tr>
+</table>
+</div>
+
+<div>
+<pagination-controls style ="color:aliceblue"
+                        responsive="true"
+                       previousLabel="Previous"
+                       nextLabel="Next"
+                       (pageChange)="pagination.page= $event" >
+  </pagination-controls>
+ 
+    
+</div>

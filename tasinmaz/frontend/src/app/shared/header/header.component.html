@@ -1,0 +1,17 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-end" style="background-color: #c2c3c4;"*ngIf="service.visible">
+  <div class="container-fluid">
+    <span class="navbar-brand mb-0 h1">Taşınmaz</span>
+  </div>
+  <div class="nav-item">
+    <a class="navbar-brand" [routerLink]="['/tasinmazlar']" routerLinkActive="active">Taşınmaz İşlemleri</a>
+  </div>
+  <div class="nav-item" *ngIf="service.userOrAdmin==true">
+    <a  class="navbar-brand" [routerLink]="['/loglar']" routerLinkActive="active">Log İşlemleri</a>
+  </div>
+  <div class="nav-item" *ngIf="service.userOrAdmin==true">
+    <a  class="navbar-brand"  [routerLink]="['/kullanicilar']" routerLinkActive="active">Kullanıcı İşlemleri</a>
+  </div>
+  <div class="nav-item" >
+    <a class="navbar-brand" [routerLink]="['/']" routerLinkActive="active" (click)="onClick()">Logout</a>
+  </div>
+</nav>

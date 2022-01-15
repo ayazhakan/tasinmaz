@@ -1,0 +1,45 @@
+<div class="row" *ngIf="service.visible">
+    <div class="col-md-6 offset-md-3 mt-4">
+      <h3 style ="color:aliceblue">Taşınmaz Login</h3>
+      <form #f="ngForm" >
+        <div class="mb-3">
+          <label for="email" class="form-label" style ="color:aliceblue">Email</label>
+          <input
+            type="email"
+            name="email"
+            ngModel
+            required
+            #userName="ngModel"
+            class="form-control"
+            id="email"
+            placeholder="example@something.com"
+            [(ngModel)]="kullaniciBilgileri.email"
+            />
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label" style ="color:aliceblue">Password</label>
+          <input
+            type="password"
+            name="sifre"
+            ngModel
+            required
+            #sifre="ngModel"
+            class="form-control"
+            id="signinPassword1"
+            placeholder="Password"
+            [(ngModel)]="kullaniciBilgileri.sifre"
+          />
+        </div>
+        <button
+        name="giris"
+          type="submit"
+          [disabled]="f.invalid"
+          class="btn btn-primary"
+          (click)="onLogin()"
+         >
+          Signin
+        </button>
+      </form>
+    </div>
+  </div>
+  

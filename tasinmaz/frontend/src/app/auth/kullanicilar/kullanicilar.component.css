@@ -1,0 +1,25 @@
+table#table1 {
+    width:70%; 
+    margin-left:15%; 
+    margin-right:15%;
+    margin-top: 1%;
+    background-color: aliceblue;
+    margin-left: auto;
+            margin-right: auto;
+  }
+  button#btn1{
+    margin-left:85%;
+    margin-top: 1%;
+
+  }
+  button#button1{
+    margin-left:15%; 
+    
+    margin-top: 1%;
+    width:8%; 
+
+  }
+  input#arama{
+    margin-top: 1%;
+   width:62%; 
+  }

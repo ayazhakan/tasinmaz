@@ -1,0 +1,92 @@
+<form #form="ngForm" (submit)="onSubmit(form)">
+  <table id="table1" class="table table-sm">
+  <tr id="tr1">
+    
+
+
+    <td  style ="color:aliceblue">İl</td> 
+    <td style ="color:aliceblue">
+    <select [(ngModel)]="guncellenecekTasinmaz.cityid" name="sehir" #sehir="ngModel" 
+    (ngModelChange)='secilenCity($event)' >     
+    <option 
+      *ngFor="let sehir of city"
+      [value]="sehir.cityid">
+    {{sehir.cityname}}
+    </option>
+    </select>
+    </td>
+      
+  </tr>
+  <tr>
+    <td  style ="color:aliceblue">İlçe</td> 
+    <td style ="color:aliceblue">
+      <select [(ngModel)]="guncellenecekTasinmaz.countyid" name="ilce" #ilce="ngModel"
+     (ngModelChange)='secilenCounty($event)'> 
+     <option
+      *ngFor="let ilce of county"
+      [value]="ilce.countyid">
+    {{ilce.countyname}}
+    </option>
+    </select>
+    </td>
+  </tr>
+<tr>
+    <td  style ="color:aliceblue">Mahalle</td> 
+    <td style ="color:aliceblue">
+    <select [(ngModel)]="guncellenecekTasinmaz.neighborhoodid"  
+    (ngModelChange)='secilenMahalle(mahalle.value)'
+    name="mahalle" #mahalle="ngModel"
+    >     
+     <option
+      *ngFor="let mahalle of neighborhood"
+      [value]="mahalle.neighborhoodid">
+    {{mahalle.neighborhoodname}}
+    </option>
+    </select>
+    </td>
+  </tr>
+   
+
+<tr>
+  
+    <td style ="color:aliceblue">Ada</td>
+    <td>
+      <input id="i4" type="number" name="ada" #ada="ngModel" [(ngModel)]="guncellenecekTasinmaz.ada">
+    </td>
+</tr>
+    
+
+<tr>
+
+<td style ="color:aliceblue">Parsel</td>
+<td>
+  <input id="i5" type="number" size="30" name="parsel" #parsel="ngModel"   [(ngModel)]="guncellenecekTasinmaz.parsel">
+</td>
+
+</tr>
+
+<tr>
+
+<td style ="color:aliceblue">Nitelik</td>
+<td>
+  <input id="i5" type="text" name="nitelik" #parsel="ngModel"   [(ngModel)]="guncellenecekTasinmaz.nitelik">
+</td>
+
+</tr>
+
+
+<tr>
+
+    <td style ="color:aliceblue">Adres</td>
+    <td>
+      <input id="i5" type="text" size="30" name="adres" #adres="ngModel"   [(ngModel)]="guncellenecekTasinmaz.adres">
+    </td>
+
+  </tr>
+  <tr>
+    <td >   
+      <button class="btn-success"type="submit" id="button"
+      [disabled]="form.invalid" >Güncelle</button>
+    </td>
+  </tr>
+  </table></form>

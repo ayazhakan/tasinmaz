@@ -1,0 +1,51 @@
+
+  <form #form="ngForm" (submit)="onSubmit(form)">
+  <table id="table1" class="table table-sm">
+  <tr id="tr1">
+    <td style ="color:aliceblue">Ad</td>
+    <td>
+      <input id="i1" type="text" name="ad" #ad="ngModel" [(ngModel)]="service.formData.ad">
+    </td>
+    <td style ="color:aliceblue">Soyad</td>
+    <td class="col-sm-4">
+      <input id="i2"type="text"name="soyad" #soyad="ngModel" [(ngModel)]="service.formData.soyad">
+    </td>
+  
+    <td style ="color:aliceblue">Email</td>
+    <td>
+      <input id="i3"type="email" name="email" #email="ngModel" [(ngModel)]="service.formData.email">
+    </td>
+  </tr>
+
+<tr id="tr2" >
+  
+    <td style ="color:aliceblue">Parola</td>
+    <td>
+      <input id="i4" type="password" name="sifre" #sifre="ngModel" [(ngModel)]="service.formData.sifre">
+    </td>
+
+    <td  style ="color:aliceblue">Rol</td> 
+    <td style ="color:aliceblue">
+    <select class="form-select" aria-label="Default select example"
+     name="rol" #rol="ngModel"
+    [(ngModel)]="service.formData.rol">
+      <option selected ></option>
+      <option selected [ngValue]="true">Admin</option>
+      <option selected [ngValue]="false">Kullanıcı</option>  
+    </select> </td>
+</tr>
+<tr id="tr3" >
+
+    <td style ="color:aliceblue">Adres</td>
+    <td>
+      <input id="i5" type="text" size="30" name="adres" #adres="ngModel"   [(ngModel)]="service.formData.adres">
+    </td>
+
+  </tr>
+  <tr>
+    <td >   
+      <button class="btn-secondary"type="submit" id="button"
+      [disabled]="form.invalid" >Ekle</button>
+    </td>
+  </tr>
+  </table></form>

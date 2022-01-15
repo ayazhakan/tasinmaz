@@ -1,0 +1,48 @@
+<button id="btn1" class="btn-secondary"[routerLink]="['/kullaniciekle']" routerLinkActive="active">Kullanıcı Ekle</button>
+    <div  class="search-button input-group">
+      <button id="button1" type="submit" class="btn-secondary" (click)="kullaniciAra()">Ara</button>
+    <input [(ngModel)]="searchText" id="arama" type="text" placeholder="Ara">
+    </div>
+    <div>
+<table id="table1" class="table table-bordered table-striped table-hover table-condensed"style="text-align:center;" >
+    
+    <thead>
+      <tr>
+        <th scope="col">Ad</th>
+        <th scope="col">Soyad</th>
+        <th scope="col">E-Mail</th>
+        <th scope="col">Adres</th>
+        <th scope="col">Rol</th>
+      </tr>
+    </thead>
+    <tr *ngFor="let kullanici of kullanici | paginate  :{
+      itemsPerPage:pagination.pageSize,
+      currentPage:pagination.page,
+      totalItems:pagination.count};
+      let i = index
+      ">
+      <td>{{ kullanici.ad }}</td>
+      <td>{{ kullanici.soyad }}</td>
+      <td>{{ kullanici.email }}</td>
+      <td>{{ kullanici.adres }}</td>
+      <td *ngIf="kullanici.rol==true">Admin</td>
+      <td *ngIf="kullanici.rol==false">Kullanıcı</td>
+      <td>
+        
+        <button class="btn-success"[routerLink]="['/kullaniciguncelle',kullanici.kullaniciid]" routerLinkActive="active" >Güncelle </button>
+        
+        <button class="btn-danger"(click)="deleteKullanici(kullanici.kullaniciid)">Sil</button>
+  
+          <button class="btn-info"(click)="yazdirKullanici(kullanici)">Yazdır</button>
+      </td>
+    </tr>
+  </table>
+</div> 
+<div>
+  <pagination-controls style ="color:aliceblue"
+                        responsive="true"
+                       previousLabel="Previous"
+                       nextLabel="Next"
+                       (pageChange)="pagination.page= $event" >
+  </pagination-controls>
+ </div>
